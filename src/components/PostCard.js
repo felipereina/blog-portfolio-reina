@@ -6,7 +6,6 @@ import { Link } from "gatsby"
 const PostCard = ({ post }) => {
   const { title, date, author, slug } = post.frontmatter
   const image = post.frontmatter.image.childImageSharp.fluid
-  console.log(post)
 
   return (
     <article className={styles.card}>

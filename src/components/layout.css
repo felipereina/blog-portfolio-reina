@@ -31,3 +31,14 @@ body {
     margin: 3rem 0;
     text-transform: capitalize;
 }
+
+.post-image span {
+    display: block;
+    padding-bottom: 0!important;
+    margin: 2rem;
+}
+
+.post-image img {
+    display: block;
+    max-width: 100%;
+}
