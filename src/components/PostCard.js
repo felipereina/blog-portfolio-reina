@@ -1,12 +1,14 @@
 import React from "react"
-import { FaAdobe } from "react-icons/fa"
 import styles from "../css/postcard.module.css"
 import Image from "gatsby-image"
 import { Link } from "gatsby"
 
 const PostCard = ({ post }) => {
-  const { title, date, author, slug } = post.frontmatter
-  const image = post.frontmatter.image.childImageSharp.fluid
+  console.log(">>> POSTCARD POST:")
+  console.log(post)
+
+  const { title, date, author, slug } = post
+  const image = post.image.childImageSharp.fluid
 
   return (
     <article className={styles.card}>

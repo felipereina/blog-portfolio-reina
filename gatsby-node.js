@@ -17,14 +17,20 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `)
+
   posts.forEach(({ node }) => {
+    console.log(node.frontmatter)
     const { slug } = node.frontmatter
-    createPage({
-      path: slug,
-      component: require.resolve("./src/templates/post-template.js"),
-      context: {
-        slug: slug,
-      },
-    })
+
+    if (!!slug) {
+      console.log(slug)
+      createPage({
+        path: slug,
+        component: require.resolve("./src/templates/post-template.js"),
+        context: {
+          slug: slug,
+        },
+      })
+    }
   })
 }

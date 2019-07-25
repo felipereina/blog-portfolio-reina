@@ -4,7 +4,6 @@ import { Link } from "gatsby"
 import { FaAlignLeft } from "react-icons/fa"
 import links from "../constants/links"
 import socialIcons from "../constants/social-icons"
-import logo from "../images/logo.svg"
 
 const Navbar = () => {
   const [isOpen, setNav] = useState(false)

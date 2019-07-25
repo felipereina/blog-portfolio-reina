@@ -35,6 +35,17 @@ const getPosts = graphql`
 export default () => {
   const response = useStaticQuery(getPosts)
   const posts = response.allMdx.edges
+  console.log(" >>>> posts:")
+  console.log(posts)
+  let realPosts = []
+
+  posts.forEach(({ node }) => {
+    if (node.frontmatter.title !== "") {
+      realPosts.push(node)
+    }
+  })
+  console.log(" >>>> REALPosts:")
+  console.log(realPosts)
   return (
     <Layout>
       <SimpleHero>
@@ -44,7 +55,7 @@ export default () => {
           </Link>
         </Banner>
       </SimpleHero>
-      <PostList posts={posts} />
+      <PostList posts={realPosts} />
     </Layout>
   )
 }
