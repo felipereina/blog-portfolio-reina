@@ -9,6 +9,8 @@
     --mainWhite: #fff;
     --mainBlack: #3f3f3f;
     --darkGrey: #8e8e8e;
+    --mainSpacing: 4px;
+    --mainTransition: all 0.3s linear;
 }
 
 body {
@@ -41,4 +43,66 @@ body {
 .post-image img {
     display: block;
     max-width: 100%;
+}
+
+.homeHero {
+    color: var(--mainWhite)
+}
+
+.btn-black, .btn-primary {
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: var(--mainSpacing);
+    color: var(--mainBlack);
+    border: 2px solid var(--mainBlack);
+    padding: 0.9rem 1.6rem;
+    display: inline-block;
+    transition: var(--mainTransition);
+    cursor: pointer;
+}
+
+.btn-black:hover {
+    background: var(--mainBlack);
+    color: var(--mainWhite);
+}
+
+.btn-white, .btn-primary {
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: var(--mainSpacing);
+    color: var(--mainWhite);
+    border: 2px solid var(--mainWhite);
+    padding: 0.9rem 1.6rem;
+    display: inline-block;
+    transition: var(--mainTransition);
+    cursor: pointer;
+    margin-bottom: 1rem
+}
+
+.btn-white:hover {
+    background: var(--mainWhite);
+    color: var(--primaryColor);
+}
+
+.btn-primary {
+    background: var(--mainGrey);
+    color: var(--mainBlack);
+    border: 2px solid var(--mainBlack);
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: var(--mainBlack);
+}
+
+.defaultHero {
+    min-height: calc(20vh - 30px);
+    background: linear-gradient(rgba(63, 208, 212, 0.7), rgba(0, 0, 0, 0.7)), url("../images/rio.jpg") center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.h1 {
+    color: var(--mainWhite)
 }

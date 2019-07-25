@@ -4,14 +4,17 @@
   align-items: center;
   padding: 1rem 1.25rem;
 }
+
 .logo-btn {
   background: transparent;
   border: none;
   outline: none;
 }
+
 .logo-btn:hover {
   cursor: pointer;
 }
+
 .logo-icon {
   color: var(--primaryColor);
   font-size: 1.5rem;
@@ -23,9 +26,11 @@
   height: 0;
   overflow: hidden;
 }
+
 .show-nav {
   height: 216px;
 }
+
 .nav-links a {
   display: block;
   padding: 1rem 1.25rem;
@@ -36,12 +41,15 @@
   font-weight: bold;
   letter-spacing: var(--mainSpacing);
 }
+
 .nav-links a:hover {
   color: var(--primaryColor);
 }
+
 .nav-social-links {
   display: none;
 }
+
 @media screen and (min-width: 576px) {
   .navbar {
     padding: 0 2rem;

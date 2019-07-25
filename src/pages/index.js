@@ -2,6 +2,9 @@ import React from "react"
 import Layout from "../components/layout"
 import PostList from "../components/PostList"
 import { graphql, useStaticQuery } from "gatsby"
+import SimpleHero from "../components/SimpleHero"
+import Banner from "../components/Banner"
+import { Link } from "gatsby"
 
 const getPosts = graphql`
   {
@@ -34,6 +37,13 @@ export default () => {
   const posts = response.allMdx.edges
   return (
     <Layout>
+      <SimpleHero>
+        <Banner className="homeHero" info="You can see my best projects here">
+          <Link to="/portfolio" className="btn-white">
+            explore portfolio
+          </Link>
+        </Banner>
+      </SimpleHero>
       <PostList posts={posts} />
     </Layout>
   )

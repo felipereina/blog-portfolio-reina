@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import styles from "../css/navbar.module.css"
 import { Link } from "gatsby"
-import { FaAlignRight } from "react-icons/fa"
+import { FaAlignLeft } from "react-icons/fa"
 import links from "../constants/links"
 import socialIcons from "../constants/social-icons"
 import logo from "../images/logo.svg"
@@ -18,7 +18,7 @@ const Navbar = () => {
       <div className={styles.navCenter}>
         <div className={styles.navHeader}>
           <button type="button" className={styles.logoBtn} onClick={toggleNav}>
-            <FaAlignRight className={styles.logoIcon} />
+            <FaAlignLeft className={styles.logoIcon} />
           </button>
         </div>
         <ul
