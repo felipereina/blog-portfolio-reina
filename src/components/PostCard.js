@@ -3,10 +3,7 @@ import styles from "../css/postcard.module.css"
 import Image from "gatsby-image"
 import { Link } from "gatsby"
 
-const PostCard = ({ post }) => {
-  console.log(">>> POSTCARD POST:")
-  console.log(post)
-
+const PostCard = ({ post, excerpt }) => {
   const { title, date, author, slug } = post
   const image = post.image.childImageSharp.fluid
 
@@ -21,7 +18,7 @@ const PostCard = ({ post }) => {
           <h6>
             <span>by {author}</span> /<span>{date}</span>
           </h6>
-          <p>{post.excerpt}</p>
+          <p>{excerpt}</p>
           <Link to={slug} className={styles.link}>
             read more
           </Link>

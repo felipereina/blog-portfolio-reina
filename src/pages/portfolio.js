@@ -7,8 +7,18 @@ export default class portfolio extends Component {
   render() {
     return (
       <Layout>
-        <StyledHero img={this.props.data.rio.childImageSharp.fluid} />
-        <Projects />
+        {/* <StyledHero img={this.props.data.rio.childImageSharp.fluid} />
+        <Projects /> */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: "10rem",
+          }}
+        >
+          <h1>Sorry, I am still doing some work on the site</h1>
+        </div>
       </Layout>
     )
   }
