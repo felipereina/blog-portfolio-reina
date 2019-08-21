@@ -17,7 +17,7 @@ export default class portfolio extends Component {
             margin: "10rem",
           }}
         >
-          <h1>Sorry, I am still doing some work on the site</h1>
+          <h1>I am still doing some work on the site</h1>
         </div>
       </Layout>
     )
