@@ -15,8 +15,8 @@ const Blog = ({data}) => {
             "embedded-asset-block": (node) =>{
                 return( 
                 <div>
-                <img width="400" src={node.data.target.fields.file['en-US'].url}/>
-                </div>
+{/*                  <img width="400" src={node.data.target.fields.file['en-US'].url}/>
+ */}                </div>
                 )}
         }
     }
@@ -49,7 +49,8 @@ export const query = graphql`
 query getBlog($slug: String!){
     post:contentfulPost( slug: {eq: $slug} ){
     title
-    date(formatString:"d MMMM, Y")
+    author
+    date(formatString:"D MMMM, Y")
     body{
       json
     }

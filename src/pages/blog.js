@@ -15,6 +15,7 @@ query{
         node{
           date(formatString:"D MMMM Y")
           title
+          author
           excerpt{
             childMarkdownRemark {
               html

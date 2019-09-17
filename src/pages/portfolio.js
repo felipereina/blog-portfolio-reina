@@ -1,7 +1,5 @@
 import React, { Component } from "react"
 import Layout from "../components/Layout"
-import StyledHero from "../components/StyledHero"
-import Projects from "../components/Projects/Projects"
 import { graphql } from "gatsby"
 export default class portfolio extends Component {
   render() {

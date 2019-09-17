@@ -14,27 +14,7 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   }
   `)
-
-
- /* const {
-    data: {
-      allMdx: { edges: posts },
-    },
-  } = await graphql(`
-    {
-      allMdx {
-        edges {
-          node {
-            frontmatter {
-              slug
-            }
-          }
-        }
-      }
-    }
-  `)
-*/
-
+  
   data.posts.edges.forEach(({ node }) => {
       createPage({
         path: `blog/${node.slug}`,

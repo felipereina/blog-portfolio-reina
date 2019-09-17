@@ -29,25 +29,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `posts`,
-        path: `src/posts`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: `images`,
         path: `${__dirname}/src/images/`,
-      },
-    },
-    {
-      resolve: `gatsby-mdx`,
-      options: {
-        gatsbyRemarkPlugins: [
-          {
-            resolve: "gatsby-remark-images",
-          },
-        ],
       },
     },
   ],
