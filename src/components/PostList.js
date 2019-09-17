@@ -3,7 +3,6 @@ import PostCard from "./PostCard"
 import styles from "../css/postlist.module.css"
 
 const PostList = ({ posts }) => {
-  const test = "test"
   return (
     <section className={styles.posts}>
       <div className={styles.center}>

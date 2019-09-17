@@ -1,6 +1,5 @@
-import React, { Component } from "react"
-import Layout from "../components/layout"
-import BlogList from "../components/Blog/BlogList"
+import React from "react"
+import Layout from "../components/myLayout"
 import PostList from "../components/PostList"
 import { graphql, useStaticQuery } from "gatsby"
 import SimpleHero from "../components/SimpleHero"

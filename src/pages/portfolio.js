@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import Layout from "../components/Layout"
+import Layout from "../components/myLayout"
 import { graphql } from "gatsby"
 export default class portfolio extends Component {
   render() {
