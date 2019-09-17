@@ -3,11 +3,13 @@ import PostCard from "./PostCard"
 import styles from "../css/postlist.module.css"
 
 const PostList = ({ posts }) => {
+  const test = "test"
   return (
     <section className={styles.posts}>
       <div className={styles.center}>
-        {posts.map(({ frontmatter, excerpt }, index) => {
-          return <PostCard key={index} post={frontmatter} excerpt={excerpt} />
+        {posts.map(({ node }, index) => {
+          console.log(node)
+          return <PostCard key={node.id} post={node} excerpt={node.excerpt.childMarkdownRemark.html} />
         })}
       </div>
     </section>

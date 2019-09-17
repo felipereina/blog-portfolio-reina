@@ -17,6 +17,9 @@ module.exports = {
         accessToken: "URMVHdm-CqJ7Ua00dUOIRx-BN59GWIKijISVQO1QbaQ",
       },
     },
+    {
+      resolve: `gatsby-transformer-remark`,
+    },
     `gatsby-plugin-playground`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

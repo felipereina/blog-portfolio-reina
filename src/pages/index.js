@@ -5,55 +5,12 @@ import { graphql, useStaticQuery } from "gatsby"
 import SimpleHero from "../components/SimpleHero"
 import Banner from "../components/Banner"
 import { Link } from "gatsby"
+import Blog from "./blog"
 
-const getPosts = graphql`
-  {
-    allMdx(sort: { fields: frontmatter___date, order: DESC }) {
-      totalCount
-      edges {
-        node {
-          frontmatter {
-            title
-            author
-            slug
-            date(formatString: "MMMM Do, YYYY")
-            image {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-            }
-          }
-          excerpt
-        }
-      }
-    }
-  }
-`
 
 export default () => {
-  const response = useStaticQuery(getPosts)
-  const posts = response.allMdx.edges
-
-  let realPosts = []
-
-  posts.forEach(({ node }) => {
-    if (node.frontmatter.title !== "") {
-      realPosts.push(node)
-    }
-  })
-
+  
   return (
-    <Layout>
-      <SimpleHero>
-        <Banner className="homeHero" info="You can see my best projects here">
-          <Link to="/portfolio" className="btn-white">
-            explore portfolio
-          </Link>
-        </Banner>
-      </SimpleHero>
-      <PostList posts={realPosts} />
-    </Layout>
+     <Blog/>
   )
 }
