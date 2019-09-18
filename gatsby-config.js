@@ -9,7 +9,7 @@ module.exports = {
       "O_Reina, Felipe Reina personal blog and portfolio. Portuguese and European Startup Scene, React, React Native",
     author: "O_Reina, Felipe Reina",
     twitterUsername: "@O_Reina",
-    image:"rio.jpg",
+    image:"/rio.jpg",
     siteUrl:"https://felipereina.netlify.com"
   },
   plugins: [
