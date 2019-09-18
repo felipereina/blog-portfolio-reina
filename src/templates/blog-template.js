@@ -8,14 +8,14 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 const Blog = ({data}) => {
 
     const{title, author, date, body:{json}} = data.post
-    console.log(json)
 
     const options = {
         renderNode: {
             "embedded-asset-block": (node) =>{
                 return( 
-                <div>
-                  <img width="400" src={node.data.target.fields.file['en-US'].url}/>
+                <div display="inline-block" align-items="center">
+                  <img width="600" 
+                  src={node.data.target.fields.file['en-US'].url}/>
                  </div>
                 )}
         }

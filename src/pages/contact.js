@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import Layout from "../components/myLayout"
+import Contact from "../components/Contact/Contact"
 
 export default class contact extends Component {
   render() {
@@ -13,7 +14,7 @@ export default class contact extends Component {
             margin: "10rem",
           }}
         >
-          <h1>I am still doing some work on the site</h1>
+          <Contact/>
         </div>
       </Layout>
     )
