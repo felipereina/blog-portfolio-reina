@@ -91,8 +91,8 @@ body {
 }
 
 .btn-primary:hover {
-    background: transparent;
-    color: var(--mainBlack);
+    background: var(--mainBlack);
+    color: var(--mainWhite);
 }
 
 .defaultHero {

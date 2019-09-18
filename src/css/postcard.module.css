@@ -20,6 +20,12 @@
   padding: 20px 0 30px 0;
   text-align: left;
 }
+.excerpt {
+  display: inline-block;
+  font-size: 15px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
 .link {
   border: 1px solid var(--mainBlack);
   padding: 4px 8px;
@@ -33,10 +39,11 @@
   background: var(--mainBlack);
   color: var(--mainWhite);
 }
-
-/* .image > div {
+/* 
+.image > div {
   height: 250px;
 } */
+
 @media screen and (min-width: 776px) {
   .card {
     display: grid;

@@ -6,8 +6,8 @@ const PostList = ({ posts }) => {
   return (
     <section className={styles.posts}>
       <div className={styles.center}>
-        {posts.map(({ node }, index) => {
-          console.log(node)
+        {posts.map(({ node }) => {
+          
           return <PostCard key={node.id} post={node} excerpt={node.excerpt.childMarkdownRemark.html} />
         })}
       </div>

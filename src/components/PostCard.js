@@ -12,12 +12,13 @@ const PostCard = ({ post, excerpt }) => {
       </div>
       <div className={styles.info}>
         <div>
-          <h2>{title}</h2>
+          <h3>{title}</h3>
           <h6>
             by <span>{author}</span>/<span>{date}</span>
           </h6>
-{/*           <p>{excerpt}</p>
- */}          <Link to={`/blog/${slug}`} className={styles.link}>
+          <div className={styles.excerpt}
+          dangerouslySetInnerHTML={{ __html: excerpt }} />
+           <Link to={`/blog/${slug}`} className={styles.link}>
             read more
           </Link>
         </div>

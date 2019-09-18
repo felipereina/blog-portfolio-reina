@@ -15,8 +15,8 @@ const Blog = ({data}) => {
             "embedded-asset-block": (node) =>{
                 return( 
                 <div>
-{/*                  <img width="400" src={node.data.target.fields.file['en-US'].url}/>
- */}                </div>
+                  <img width="400" src={node.data.target.fields.file['en-US'].url}/>
+                 </div>
                 )}
         }
     }
@@ -34,7 +34,7 @@ const Blog = ({data}) => {
                         {documentToReactComponents(json, options)}
                     </article>
 
-                    <Anilink fade to='/blog' className="btnPrimary">
+                    <Anilink fade to='/blog' className="btn-primary">
                         all posts
                     </Anilink>
                     
