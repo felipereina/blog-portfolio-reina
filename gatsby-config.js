@@ -23,6 +23,7 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
     },
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-playground`,
     `gatsby-transformer-sharp`,
@@ -36,6 +37,14 @@ module.exports = {
         name: `images`,
         path: `${__dirname}/src/images/`,
       },
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: "https://felipereina.netlify.com",
+        sitemap: "https://felipereina.netlify.com/sitemap.xml",
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
     },
   ],
 }

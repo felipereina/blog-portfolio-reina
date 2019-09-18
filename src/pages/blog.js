@@ -5,6 +5,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import SimpleHero from "../components/SimpleHero"
 import Banner from "../components/Banner"
 import { Link } from "gatsby"
+import SEO from "../components/SEO"
 
 
 const getPosts = graphql`
@@ -39,6 +40,7 @@ const blog = () => {
 
     return (
       <Layout>
+      <SEO title="Blog"/>
       <SimpleHero>
         <Banner className="homeHero" info="You can see my best projects here">
           <Link to="/portfolio" className="btn-white">

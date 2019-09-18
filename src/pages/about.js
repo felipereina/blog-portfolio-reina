@@ -1,10 +1,12 @@
 import React, { Component } from "react"
 import Layout from "../components/myLayout"
+import SEO from "../components/SEO"
 
 export default class about extends Component {
   render() {
     return (
       <Layout>
+        <SEO title="About"/>
         <div
           style={{
             display: "flex",

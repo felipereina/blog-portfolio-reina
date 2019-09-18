@@ -4,6 +4,7 @@ import Layout from '../components/myLayout'
 import styles from "../css/postTemplate.module.css"
 import Anilink from 'gatsby-plugin-transition-link/AniLink'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import SEO from "../components/SEO"
 
 const Blog = ({data}) => {
 
@@ -22,6 +23,7 @@ const Blog = ({data}) => {
     }
     return(
         <Layout>
+          <SEO title={title}/>
             <section className={styles.template}>
                 
                 <div className={styles.info}>

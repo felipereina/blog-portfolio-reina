@@ -1,11 +1,13 @@
 import React, { Component } from "react"
 import Layout from "../components/myLayout"
 import { graphql } from "gatsby"
+import SEO from "../components/SEO"
 
 export default class portfolio extends Component {
   render() {
     return (
       <Layout>
+        <SEO title="Portfolio"/>
         {/* <StyledHero img={this.props.data.rio.childImageSharp.fluid} />
         <Projects /> */}
         <div
