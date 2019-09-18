@@ -4,10 +4,13 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: "O_Reina",
+    title: "O_Reina Blog",
     description:
       "O_Reina, Felipe Reina personal blog and portfolio. Portuguese and European Startup Scene, React, React Native",
     author: "O_Reina, Felipe Reina",
+    twitterUsername: "@O_Reina",
+    image:"rio.jpg",
+    siteUrl:"https://felipereina.netlify.com"
   },
   plugins: [
     {
@@ -20,6 +23,7 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
     },
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-playground`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
