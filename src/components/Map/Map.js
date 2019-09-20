@@ -41,9 +41,12 @@ class Map extends React.Component{
     }
 
     render(){
+        if (typeof window !== 'undefined') {
         return(
             <Wrapper width="1280px" height="720px" id="map" />
         )
+        }
+        return null
     }
 }
 
