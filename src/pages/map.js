@@ -10,10 +10,10 @@ export default class map extends Component {
         <SEO title="Contact"/>
         <div
           style={{
-            display: "flex",
             justifyContent: "center",
             alignItems: "center",
             margin: "10rem",
+            marginTop: "3rem",
           }}
         >
           <Map/>

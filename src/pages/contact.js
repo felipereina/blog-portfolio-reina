@@ -14,6 +14,7 @@ export default class contact extends Component {
             justifyContent: "center",
             alignItems: "center",
             margin: "10rem",
+            marginTop: "3rem",
           }}
         >
           <Contact/>
