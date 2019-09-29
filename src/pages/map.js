@@ -2,10 +2,12 @@ import React, { Component } from "react"
 import Layout from "../components/myLayout"
 import Map from "../components/Map/Map"
 import SEO from "../components/SEO"
+import { useCSV } from '../components/Map/ReadCSV'
 
-export default class map extends Component {
-  render() {
-    return (
+const map = () => {
+  const data = useCSV()
+  
+  return (
       <Layout>
         <SEO title="Contact"/>
         <div
@@ -16,9 +18,10 @@ export default class map extends Component {
             marginTop: "3rem",
           }}
         >
-          <Map/>
+          <Map data={data}/>
         </div>
       </Layout>
     )
   }
-}
+
+export default map

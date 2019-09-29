@@ -19,7 +19,7 @@ query{
 
 const SEO = ({title, description}) => {
 
-    const {site} = useStaticQuery(getData)
+    const {site} = useStaticQuery(getData) 
 
     const {author, siteUrl, siteDesc, siteTitle, image, twitterUsername} = site.siteMetadata
 

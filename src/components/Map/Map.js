@@ -5,8 +5,6 @@ import styled from 'styled-components'
 import RioData from "./RioData";
 import Title from '../Title'
 
-
-
 const Wrapper = styled.div`
     width: ${props => props.width};
     height: ${props => props.height};
@@ -17,16 +15,14 @@ class Map extends React.Component {
     constructor() {
         super()
         this.rioData = new RioData()
-
         this.state = {
             favelas: [],
             filter: "All"
         }
+
     }
 
     componentDidMount() {
-
-
         this.layer = Leaflet.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 
         })
@@ -46,18 +42,19 @@ class Map extends React.Component {
         this.rioData.get().then(result => {
             this.geojsonFeature = result
 
+            const data = this.props.data
             result.forEach(element => {
+                
+                for (let i = 0; i < data.length; i++) {
 
-                if (element.properties.Nome == "Rocinha") {
-                    element.properties.faccao = "Comando Vermelho"
-                } else if (element.properties.Nome == "Morro do Dendê") {
-                    element.properties.faccao = "Terceiro Comando"
-                } else if (element.properties.Nome == "Vila do Vintém") {
-                    element.properties.faccao = "Amigos dos Amigos"
-                } else if (element.properties.Nome == "Rio das Pedras") {
-                    element.properties.faccao = "Milícias"
+                    if (element.properties.Código == data[i].node.C_digo) {
+                        element.properties.faccao = data[i].node.Faccao
+                        element.properties.complexo = data[i].node.Complexo
+                        element.properties.expressivit = data[i].node.Pouco_Expressivo
+                        this.favelas.push(element)
+                    }
                 }
-                this.favelas.push(element)
+                
             });
 
             this.setState({ favelas: this.favelas })
@@ -69,15 +66,21 @@ class Map extends React.Component {
 
     renderMap = () => {
         let filtered = this.state.favelas
-
+        console.log(filtered)
         this.allShapes = Leaflet.geoJSON(filtered, {
             onEachFeature: this.onEachFeature,
             style: (feature) => {
                 switch (feature.properties.faccao) {
-                    case 'Comando Vermelho': return { color: "#d11c08", "weight": 3, "opacity": 0.7 };
-                    case 'Terceiro Comando': return { color: "#078524", "weight": 3, "opacity": 0.7 };
-                    case 'Amigos dos Amigos': return { color: "#f0cc16", "weight": 3, "opacity": 0.7 };
-                    case 'Milícia': return { color: "#1665f0", "weight": 3, "opacity": 0.7 };
+                    case 'CV': return { color: "#d11c08", "weight": 3, "opacity": 0.7 };
+                    break
+                    case 'TCP': return { color: "#a6f514", "weight": 3, "opacity": 0.7 };
+                    break
+                    case 'ADA': return { color: "#f0cc16", "weight": 3, "opacity": 0.7 };
+                    break
+                    case 'Milicia': return { color: "#1665f0", "weight": 3, "opacity": 0.7 };
+                    break
+                    default:
+                        return { color: "#bdc2b2", "weight": 3, "opacity": 0.7 };
 
                 }
             }
@@ -86,7 +89,7 @@ class Map extends React.Component {
         this.comandoVermelho = Leaflet.geoJson(filtered, {
             onEachFeature: this.onEachFeature,
             filter: function (feature, layer) {
-                return feature.properties.faccao === "Comando Vermelho";
+                return feature.properties.faccao === "CV";
             },
             pointToLayer: function (feature, latlng) {
                 return Leaflet.marker(latlng).on('mouseover', function () {
@@ -99,21 +102,21 @@ class Map extends React.Component {
         this.terceiroComando = Leaflet.geoJson(filtered, {
             onEachFeature: this.onEachFeature,
             filter: function (feature, layer) {
-                return feature.properties.faccao === "Terceiro Comando";
+                return feature.properties.faccao === "TCP";
             },
             pointToLayer: function (feature, latlng) {
                 return Leaflet.marker(latlng).on('mouseover', function () {
                     this.bindPopup(feature.properties.Nome).openPopup();
                 });
             },
-            style: { color: "#078524", "weight": 3, "opacity": 0.7 }
+            style: { color: "#a6f514", "weight": 3, "opacity": 0.7 }
 
         });
 
         this.ADA = Leaflet.geoJson(filtered, {
             onEachFeature: this.onEachFeature,
             filter: function (feature, layer) {
-                return feature.properties.faccao === "Amigos dos Amigos";
+                return feature.properties.faccao === "ADA";
             },
             pointToLayer: function (feature, latlng) {
                 return Leaflet.marker(latlng).on('mouseover', function () {
@@ -126,7 +129,7 @@ class Map extends React.Component {
         this.milicias = Leaflet.geoJson(filtered, {
             onEachFeature: this.onEachFeature,
             filter: function (feature, layer) {
-                return feature.properties.faccao === "Milícias";
+                return feature.properties.faccao === "Milicia";
             },
             pointToLayer: function (feature, latlng) {
                 return Leaflet.marker(latlng).on('mouseover', function () {
@@ -178,16 +181,18 @@ class Map extends React.Component {
         if (typeof window !== 'undefined') {
             return (
                 <>
-                <Title title="Favelas do Rio" subtitle="por Facção Criminosa"/>
-                    <div style={{display: "flex", paddingBottom: "10px"}}>
-                        <button style={{padding: "10px"}} onClick={() => this.click("All")}>Todas</button>
+                    <Title title="Favelas do Rio" subtitle="por Facção Criminosa" />
+                    <div style={{ display: "flex", paddingBottom: "10px" }}>
+                        <button style={{ padding: "10px" }} onClick={() => this.click("All")}>Todas</button>
                         <button onClick={() => this.click("Comando Vermelho")}>Comando Vermelho</button>
                         <button onClick={() => this.click("Terceiro Comando")}>Terceiro Comando</button>
                         <button onClick={() => this.click("Amigos dos Amigos")}>Amigos dos Amigos</button>
                         <button onClick={() => this.click("Milícias")}>Milícias</button>
                     </div>
-                    <div style={{display: "flex", justifyContent: "center",
-            alignItems: "center"}}>               
+                    <div style={{
+                        display: "flex", justifyContent: "center",
+                        alignItems: "center"
+                    }}>
                         <Wrapper width="1280px" height="720px" id="map" />
                     </div>
                 </>
