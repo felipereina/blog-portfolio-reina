@@ -183,11 +183,11 @@ class Map extends React.Component {
                 <>
                     <Title title="Favelas do Rio" subtitle="por Facção Criminosa" />
                     <div style={{ display: "flex", paddingBottom: "10px" }}>
-                        <button style={{ padding: "10px" }} onClick={() => this.click("All")}>Todas</button>
-                        <button onClick={() => this.click("Comando Vermelho")}>Comando Vermelho</button>
-                        <button onClick={() => this.click("Terceiro Comando")}>Terceiro Comando</button>
-                        <button onClick={() => this.click("Amigos dos Amigos")}>Amigos dos Amigos</button>
-                        <button onClick={() => this.click("Milícias")}>Milícias</button>
+                        <button style={{ padding: "10px", color: "white", backgroundColor: "black", fontWeight: "bold" }} onClick={() => this.click("All")}>Todas</button>
+                        <button style= {{backgroundColor: "#d11c08", fontWeight: "bold"}} onClick={() => this.click("Comando Vermelho")}>Comando Vermelho</button>
+                        <button style= {{backgroundColor: "#a6f514", fontWeight: "bold"}} onClick={() => this.click("Terceiro Comando")}>Terceiro Comando</button>
+                        <button style= {{backgroundColor: "#f0cc16", fontWeight: "bold"}} onClick={() => this.click("Amigos dos Amigos")}>Amigos dos Amigos</button>
+                        <button style= {{backgroundColor: "#1665f0", fontWeight: "bold"}} onClick={() => this.click("Milícias")}>Milícias</button>
                     </div>
                     <div style={{
                         display: "flex", justifyContent: "center",
