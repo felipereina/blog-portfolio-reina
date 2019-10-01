@@ -30,7 +30,7 @@ class Map extends React.Component {
         this.map = Leaflet.map('map', {
             center: [-22.9035, -43.2096],
             zoom: 11,
-            zoomControl: false,
+            zoomControl: true,
         }).addLayer(this.layer)
 
         this.onEachFeature = (feature, layer) => {
@@ -67,8 +67,21 @@ class Map extends React.Component {
     renderMap = () => {
         let filtered = this.state.favelas
         console.log(filtered)
+
+        const popup = (feature) => { return "<b>" + feature.properties.Nome + "</b><br/>" + "Complexo: " 
+                + feature.properties.complexo + "<br/>" 
+                + "Domínio: " + feature.properties.faccao
+            }
+
         this.allShapes = Leaflet.geoJSON(filtered, {
-            onEachFeature: this.onEachFeature,
+            onEachFeature: (feature, layer)=>{
+                layer.on('mouseover', function () {
+                    this.bindPopup(popup(feature)).openPopup();
+                });
+                layer.on('mouseout', function () {
+                    this.closePopup();
+                });
+            },
             style: (feature) => {
                 switch (feature.properties.faccao) {
                     case 'CV': return { color: "#d11c08", "weight": 3, "opacity": 0.7 };
@@ -87,54 +100,62 @@ class Map extends React.Component {
         })
 
         this.comandoVermelho = Leaflet.geoJson(filtered, {
-            onEachFeature: this.onEachFeature,
+            onEachFeature: (feature, layer)=>{
+                layer.on('mouseover', function () {
+                    this.bindPopup(popup(feature)).openPopup();
+                });
+                layer.on('mouseout', function () {
+                    this.closePopup();
+                });
+            },
             filter: function (feature, layer) {
                 return feature.properties.faccao === "CV";
-            },
-            pointToLayer: function (feature, latlng) {
-                return Leaflet.marker(latlng).on('mouseover', function () {
-                    this.bindPopup(feature.properties.Nome).openPopup();
-                });
             },
             style: { color: "#d11c08", "weight": 3, "opacity": 0.7 }
         });
 
         this.terceiroComando = Leaflet.geoJson(filtered, {
-            onEachFeature: this.onEachFeature,
+            onEachFeature: (feature, layer)=>{
+                layer.on('mouseover', function () {
+                    this.bindPopup(popup(feature)).openPopup();
+                });
+                layer.on('mouseout', function () {
+                    this.closePopup();
+                });
+            },
             filter: function (feature, layer) {
                 return feature.properties.faccao === "TCP";
-            },
-            pointToLayer: function (feature, latlng) {
-                return Leaflet.marker(latlng).on('mouseover', function () {
-                    this.bindPopup(feature.properties.Nome).openPopup();
-                });
             },
             style: { color: "#a6f514", "weight": 3, "opacity": 0.7 }
 
         });
 
         this.ADA = Leaflet.geoJson(filtered, {
-            onEachFeature: this.onEachFeature,
+            onEachFeature: (feature, layer)=>{
+                layer.on('mouseover', function () {
+                    this.bindPopup(popup(feature)).openPopup();
+                });
+                layer.on('mouseout', function () {
+                    this.closePopup();
+                });
+            },
             filter: function (feature, layer) {
                 return feature.properties.faccao === "ADA";
-            },
-            pointToLayer: function (feature, latlng) {
-                return Leaflet.marker(latlng).on('mouseover', function () {
-                    this.bindPopup(feature.properties.Nome).openPopup();
-                });
             },
             style: { color: "#f0cc16", "weight": 3, "opacity": 0.7 }
         });
 
         this.milicias = Leaflet.geoJson(filtered, {
-            onEachFeature: this.onEachFeature,
+            onEachFeature: (feature, layer)=>{
+                layer.on('mouseover', function () {
+                    this.bindPopup(popup(feature)).openPopup();
+                });
+                layer.on('mouseout', function () {
+                    this.closePopup();
+                });
+            },
             filter: function (feature, layer) {
                 return feature.properties.faccao === "Milicia";
-            },
-            pointToLayer: function (feature, latlng) {
-                return Leaflet.marker(latlng).on('mouseover', function () {
-                    this.bindPopup(feature.properties.Nome).openPopup();
-                });
             },
             style: { color: "#1665f0", "weight": 3, "opacity": 0.7 }
         });
