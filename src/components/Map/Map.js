@@ -4,6 +4,12 @@ import 'leaflet/dist/leaflet.css'
 import styled from 'styled-components'
 import RioData from "./RioData";
 import Title from '../Title'
+import { DiscussionEmbed } from "disqus-react"
+
+const disqusConfig = {
+    shortname: process.env.GATSBY_DISQUS_NAME,
+    config: { identifier: "map", title: "map" },
+  }
 
 const Wrapper = styled.div`
     width: ${props => props.width};
@@ -23,6 +29,7 @@ class Map extends React.Component {
     }
 
     componentDidMount() {
+
         this.layer = Leaflet.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 
         })
@@ -44,7 +51,7 @@ class Map extends React.Component {
 
             const data = this.props.data
             result.forEach(element => {
-                
+
                 for (let i = 0; i < data.length; i++) {
 
                     if (element.properties.Código == data[i].node.C_digo) {
@@ -54,7 +61,7 @@ class Map extends React.Component {
                         this.favelas.push(element)
                     }
                 }
-                
+
             });
 
             this.setState({ favelas: this.favelas })
@@ -68,13 +75,14 @@ class Map extends React.Component {
         let filtered = this.state.favelas
         console.log(filtered)
 
-        const popup = (feature) => { return "<b>" + feature.properties.Nome + "</b><br/>" + "Complexo: " 
-                + feature.properties.complexo + "<br/>" 
+        const popup = (feature) => {
+            return "<b>" + feature.properties.Nome + "</b><br/>" + "Complexo: "
+                + feature.properties.complexo + "<br/>"
                 + "Domínio: " + feature.properties.faccao
-            }
+        }
 
         this.allShapes = Leaflet.geoJSON(filtered, {
-            onEachFeature: (feature, layer)=>{
+            onEachFeature: (feature, layer) => {
                 layer.on('mouseover', function () {
                     this.bindPopup(popup(feature)).openPopup();
                 });
@@ -85,13 +93,13 @@ class Map extends React.Component {
             style: (feature) => {
                 switch (feature.properties.faccao) {
                     case 'CV': return { color: "#d11c08", "weight": 3, "opacity": 0.7 };
-                    break
+                        break
                     case 'TCP': return { color: "#a6f514", "weight": 3, "opacity": 0.7 };
-                    break
+                        break
                     case 'ADA': return { color: "#f0cc16", "weight": 3, "opacity": 0.7 };
-                    break
+                        break
                     case 'Milicia': return { color: "#1665f0", "weight": 3, "opacity": 0.7 };
-                    break
+                        break
                     default:
                         return { color: "#bdc2b2", "weight": 3, "opacity": 0.7 };
 
@@ -100,7 +108,7 @@ class Map extends React.Component {
         })
 
         this.comandoVermelho = Leaflet.geoJson(filtered, {
-            onEachFeature: (feature, layer)=>{
+            onEachFeature: (feature, layer) => {
                 layer.on('mouseover', function () {
                     this.bindPopup(popup(feature)).openPopup();
                 });
@@ -115,7 +123,7 @@ class Map extends React.Component {
         });
 
         this.terceiroComando = Leaflet.geoJson(filtered, {
-            onEachFeature: (feature, layer)=>{
+            onEachFeature: (feature, layer) => {
                 layer.on('mouseover', function () {
                     this.bindPopup(popup(feature)).openPopup();
                 });
@@ -131,7 +139,7 @@ class Map extends React.Component {
         });
 
         this.ADA = Leaflet.geoJson(filtered, {
-            onEachFeature: (feature, layer)=>{
+            onEachFeature: (feature, layer) => {
                 layer.on('mouseover', function () {
                     this.bindPopup(popup(feature)).openPopup();
                 });
@@ -146,7 +154,7 @@ class Map extends React.Component {
         });
 
         this.milicias = Leaflet.geoJson(filtered, {
-            onEachFeature: (feature, layer)=>{
+            onEachFeature: (feature, layer) => {
                 layer.on('mouseover', function () {
                     this.bindPopup(popup(feature)).openPopup();
                 });
@@ -198,17 +206,20 @@ class Map extends React.Component {
         }
     }
 
+
+
     render() {
+
         if (typeof window !== 'undefined') {
             return (
                 <>
                     <Title title="Favelas do Rio" subtitle="por Facção Criminosa" />
                     <div style={{ display: "flex", paddingBottom: "10px" }}>
                         <button style={{ padding: "10px", color: "white", backgroundColor: "black", fontWeight: "bold" }} onClick={() => this.click("All")}>Todas</button>
-                        <button style= {{backgroundColor: "#d11c08", fontWeight: "bold"}} onClick={() => this.click("Comando Vermelho")}>Comando Vermelho</button>
-                        <button style= {{backgroundColor: "#a6f514", fontWeight: "bold"}} onClick={() => this.click("Terceiro Comando")}>Terceiro Comando</button>
-                        <button style= {{backgroundColor: "#f0cc16", fontWeight: "bold"}} onClick={() => this.click("Amigos dos Amigos")}>Amigos dos Amigos</button>
-                        <button style= {{backgroundColor: "#1665f0", fontWeight: "bold"}} onClick={() => this.click("Milícias")}>Milícias</button>
+                        <button style={{ backgroundColor: "#d11c08", fontWeight: "bold" }} onClick={() => this.click("Comando Vermelho")}>Comando Vermelho</button>
+                        <button style={{ backgroundColor: "#a6f514", fontWeight: "bold" }} onClick={() => this.click("Terceiro Comando")}>Terceiro Comando</button>
+                        <button style={{ backgroundColor: "#f0cc16", fontWeight: "bold" }} onClick={() => this.click("Amigos dos Amigos")}>Amigos dos Amigos</button>
+                        <button style={{ backgroundColor: "#1665f0", fontWeight: "bold" }} onClick={() => this.click("Milícias")}>Milícias</button>
                     </div>
                     <div style={{
                         display: "flex", justifyContent: "center",
@@ -216,11 +227,14 @@ class Map extends React.Component {
                     }}>
                         <Wrapper width="1280px" height="720px" id="map" />
                     </div>
+                    <div style={{paddingTop: "20px"}}>
+                        <DiscussionEmbed {...disqusConfig} />
+                    </div>
                 </>
-            )
+                    )
+                }
+                return null
+            }
         }
-        return null
-    }
-}
-
+        
 export default Map
