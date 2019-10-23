@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import Layout from "../components/myLayout"
 import { graphql } from "gatsby"
 import SEO from "../components/SEO"
+import Projects from "../components/Projects/Projects"
 
 export default class portfolio extends Component {
   render() {
@@ -16,9 +17,10 @@ export default class portfolio extends Component {
             justifyContent: "center",
             alignItems: "center",
             margin: "10rem",
+            marginTop: "0.5rem",
           }}
         >
-          <h1>Testing Netlify build live reload</h1>
+          <Projects/>
         </div>
       </Layout>
     )

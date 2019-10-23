@@ -10,6 +10,7 @@ const getProjects = graphql`
           title
           slug
           contentful_id
+          githubProject
           images {
             fluid {
               ...GatsbyContentfulFluid_tracedSVG

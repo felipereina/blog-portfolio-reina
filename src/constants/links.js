@@ -12,7 +12,7 @@ export default [
     text: "contact",
   },
   {
-    path: "/map",
-    text: "map",
+    path: "/portfolio",
+    text: "portfolio",
   },
 ]

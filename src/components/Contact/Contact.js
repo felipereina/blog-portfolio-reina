@@ -6,7 +6,7 @@ import styles from '../../css/contact.module.css'
 const Contact = () => {
     return (
         <section>
-            <Title title="contact" subtitle="us"/>
+            <Title title="contact" subtitle="Me"/>
             <div className={styles.center}>
                 <form className={styles.form}
                     action="https://formspree.io/reina.felipe@gmail.com" method="POST" 
