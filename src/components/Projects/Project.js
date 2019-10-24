@@ -16,7 +16,7 @@ const Project = ({ project }) => {
           details
         </AniLink> 
         */}
-        <a className={styles.link} href={githubProject}>
+        <a className={styles.link} href={githubProject} target="_blank">
           details
         </a>
       </div>
