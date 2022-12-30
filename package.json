@@ -26,7 +26,7 @@
     "disqus-react": "^1.0.7",
     "dotenv": "^8.0.0",
     "fs": "0.0.1-security",
-    "gatsby": "^2.13.25",
+    "gatsby": "^2.32.13",
     "gatsby-background-image": "^0.8.0",
     "gatsby-image": "^2.2.6",
     "gatsby-mdx": "^0.6.3",
